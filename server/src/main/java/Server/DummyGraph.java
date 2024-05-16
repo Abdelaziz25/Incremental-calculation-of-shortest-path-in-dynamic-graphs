@@ -1,9 +1,8 @@
 package Server;
 
 public class DummyGraph implements IGraph{
-    @Override
-    public void generateGraph(String filePath, int graphSize, double densityRatio) {
 
+    public void DummyGraph(){
     }
 
     @Override
