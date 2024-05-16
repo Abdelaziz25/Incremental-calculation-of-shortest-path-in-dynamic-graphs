@@ -17,7 +17,7 @@ public class ServerInitializer{
             logMessage("Server is starting up...");
             configureServer();
             // TODO:: Replace DummyGraph with the actual graph implementation
-            IGraphRMI graphService = new GraphRMIServer(new DummyGraph());
+            IGraphRMI graphService = new GraphRMIServer(new Graph("server/src/main/resources/graph.txt"));
 
             IGraphRMI stub = (IGraphRMI) UnicastRemoteObject.exportObject(graphService, 0);
 
