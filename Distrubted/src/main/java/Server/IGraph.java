@@ -3,7 +3,7 @@ package Server;
 
 public interface IGraph {
 
-    public void generateGraph(String filePath, int graphSize, double denistyRatio);
+    public void generateGraph(String filePath, int graphSize, double densityRatio);
 
     public void add(int u, int v);
 

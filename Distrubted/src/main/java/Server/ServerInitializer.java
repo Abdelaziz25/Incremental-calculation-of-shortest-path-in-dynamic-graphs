@@ -5,8 +5,8 @@ import java.rmi.server.UnicastRemoteObject;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-public class MainServer{
-    private static final Logger logger = Logger.getLogger(ServerInitializer.class.getName());
+public class ServerInitializer{
+    private final static Logger logger = LogManager.getLogger(ServerInitializer.class);
 
     public static void main(String[] args) {
         new ServerInitializer().startServer();
@@ -16,7 +16,8 @@ public class MainServer{
         try {
             logMessage("Server is starting up...");
             configureServer();
-            IGraphRMI graphService = new ServerImplementation();
+            // TODO:: Replace DummyGraph with the actual graph implementation
+            IGraphRMI graphService = new GraphRMIServer(new DummyGraph());
 
             IGraphRMI stub = (IGraphRMI) UnicastRemoteObject.exportObject(graphService, 0);
 

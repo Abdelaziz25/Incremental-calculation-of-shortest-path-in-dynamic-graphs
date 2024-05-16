@@ -7,7 +7,7 @@ public interface IGraphRMI extends Remote{
 
     public String getName() throws RemoteException;
 
-    public String processBatch(String batch , String algoritm) throws RemoteException;
+    public String executeBatch(String batch , String algorithm) throws RemoteException;
 
     public int getInitialSize()throws RemoteException;
 }
