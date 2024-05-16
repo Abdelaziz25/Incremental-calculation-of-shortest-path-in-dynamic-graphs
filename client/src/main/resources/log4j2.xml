@@ -1,0 +1,24 @@
+<Configuration status="INFO" name="Client logging">
+    <Appenders>
+        <Routing name="fileAppender">
+            <Routes pattern="$${ctx:threadName}">
+                <Route>
+                    <File
+                        name="file-${ctx:threadName}"
+                        fileName="logs/Client-${date:yyyy-MM-dd}-${ctx:threadName}.log"
+                        append="false">
+                        <PatternLayout>
+                            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
+                        </PatternLayout>
+                    </File>
+                </Route>
+            </Routes>
+        </Routing>
+    </Appenders>
+
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="fileAppender" />
+        </Root>
+    </Loggers>
+</Configuration>
