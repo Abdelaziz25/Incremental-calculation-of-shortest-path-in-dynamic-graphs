@@ -48,7 +48,7 @@ public class Client extends Thread{
             Random rand = new Random();
             int updatePercentage = rand.nextInt(100);
             // int updatePercentage = 67;
-            String requestBatch = batch.generateBatch(updatePercentage,BATCH_SIZE);
+            String requestBatch = batch.generateBatch(BATCH_SIZE,updatePercentage);
             long startTime = System.currentTimeMillis();
             String batchResult = graphService.processBatch(requestBatch,ALGORITHM_USED );
             long endTime = System.currentTimeMillis();
