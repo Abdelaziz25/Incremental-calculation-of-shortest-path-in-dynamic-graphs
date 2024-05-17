@@ -1,4 +1,4 @@
-package Client;
+package com.example;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -12,9 +12,9 @@ public class Client extends Thread{
    private final int BATCH_SIZE = 10;
    private final int SLEEP_TIME = 1000;
    private final String ALGORITHM_USED = "BFS";
-   private Logger logger = LogManager.getLogger(Client.class);
+   private final Logger logger = LogManager.getLogger(Client.class);
 
-   private Map<String, String> configs;
+   private final Map<String, String> configs;
 
    public Client(Map<String, String> configs) {
       this.configs = configs;
@@ -27,8 +27,7 @@ public class Client extends Thread{
          ThreadContext.put("threadName", Thread.currentThread().getName());
          System.err.println("ClientID: "+ Thread.currentThread().getId());
 
-         Registry registry = LocateRegistry.getRegistry(configs.get("serverHost"), Integer.parseInt(configs.get("serverHost")));
-         
+         Registry registry = LocateRegistry.getRegistry(configs.get("serverHost"), Integer.parseInt(configs.get("serverPort")));
          // lookup the graph object
          GraphService graphService = (GraphService) registry.lookup("graphService");
          System.err.println("graphService found");
@@ -51,7 +50,7 @@ public class Client extends Thread{
             // int updatePercentage = 67;
             String requestBatch = batch.generateBatch(updatePercentage,BATCH_SIZE);
             long startTime = System.currentTimeMillis();
-            String batchResult = graphService.executeBatch(requestBatch,ALGORITHM_USED );
+            String batchResult = graphService.processBatch(requestBatch,ALGORITHM_USED );
             long endTime = System.currentTimeMillis();
 
             long responseTime = endTime - startTime;

@@ -1,4 +1,4 @@
-package Client;
+package com.example;
 
 import java.util.Random;
 

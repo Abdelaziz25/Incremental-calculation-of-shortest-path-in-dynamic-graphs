@@ -1,4 +1,4 @@
-package Server;
+package com.example;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,7 +24,7 @@ public class GraphRMIServer implements GraphService {
     }
 
     @Override
-    public synchronized String executeBatch(String batch, String algorithm) throws RemoteException {
+    public synchronized String processBatch(String batch, String algorithm) throws RemoteException {
         logInfo("Starting batch processing");
         long RequestStartTime = System.currentTimeMillis();
 
