@@ -5,7 +5,7 @@
                 <Route>
                     <File
                         name="file-${ctx:threadName}"
-                        fileName="logs/Client-${date:yyyy-MM-dd}-${ctx:threadName}.log"
+                        fileName="logs/${ctx:threadGroup}/Client-${date:yyyy-MM-dd}-${ctx:threadName}.log"
                         append="false">
                         <PatternLayout>
                             <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>

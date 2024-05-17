@@ -34,7 +34,7 @@ public class GraphBatchGenerator {
         return "threat ID = " +ThreadID +"\n"+
                 "response time = "+responseTime+"\n"+
                 "algorithm Type = "+ algorithmType+"\n"+
-                "updata Percentage = "+ updataPercentage+"\n"+
+                "update Percentage = "+ updataPercentage+"\n"+
                 "batchSize = "+ batchSize+"\n"+
                 "request = \n"+ request+"\n"+
                 "response = \n"+ response+"\n"+

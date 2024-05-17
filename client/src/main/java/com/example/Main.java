@@ -45,24 +45,24 @@ public class Main {
             return configMap;
         }
     public static void main(String[] args) {
-        logger.info("Starting.....");
+//        logger.info("Starting.....");
         try {
             Map<String, String> configs = readConfigurations("application.properties");
             ArrayList<Client> clientsThreads = new ArrayList<>();
             
-            int numberOfClients = Integer.parseInt(configs.get("numberOfNodes")) - 1;
-            
-            //spawning threads
-            for(int i=0;i< numberOfClients;++i){
-                clientsThreads.add(new Client(configs));
-                clientsThreads.get(i).start();
-                Thread.sleep(10);
+//            int numberOfClients = Integer.parseInt(configs.get("numberOfNodes")) ;
+
+            for (int j=0;j<5;j++){
+                for(int i=0;i<= j;i++){
+                    clientsThreads.add(new Client(configs,j+1));
+                    clientsThreads.get((j*(j+1))/2+i).start();
+                    Thread.sleep(10);
+                }
+                for (int i = 0; i < j; i++) {
+                    clientsThreads.get(((j*(j+1))/2) + i).join();
+                }
             }
 
-            //joining threads
-            for(int i=0;i<numberOfClients;++i){
-                clientsThreads.get(i).join();
-            }
             
         } catch (Exception e) {
             System.err.println("GraphService exception");
