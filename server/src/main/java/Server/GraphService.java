@@ -3,7 +3,7 @@ package Server;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-public interface IGraphRMI extends Remote{
+public interface GraphService extends Remote{
 
     public String getName() throws RemoteException;
 

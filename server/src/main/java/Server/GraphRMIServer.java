@@ -5,13 +5,13 @@ import org.apache.logging.log4j.Logger;
 
 import java.rmi.RemoteException;
 
-public class GraphRMIServer implements IGraphRMI{
+public class GraphRMIServer implements GraphService {
     private final IGraph graph;
     private final static Logger logger = LogManager.getLogger(GraphRMIServer.class);
 
 
-    public GraphRMIServer(IGraph graph){
-        this.graph = graph;
+    public GraphRMIServer(){
+        this.graph = new Graph("src/main/resources/graph.txt");
     }
 
     @Override
