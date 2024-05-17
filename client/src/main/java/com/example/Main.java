@@ -52,7 +52,7 @@ public class Main {
             
 //            int numberOfClients = Integer.parseInt(configs.get("numberOfNodes")) ;
 
-            for (int j=0;j<5;j++){
+            for (int j=0;j<15;j++){
                 for(int i=0;i<= j;i++){
                     clientsThreads.add(new Client(configs,j+1));
                     clientsThreads.get((j*(j+1))/2+i).start();
