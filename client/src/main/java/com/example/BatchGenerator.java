@@ -31,7 +31,6 @@ public class BatchGenerator {
                 "Update Percentage: " + updatePercentage + "\n" +
                 "Batch Size: " + batchSize + "\n" +
                 "Request: \n" + request + "\n" +
-                "Response: \n" + response + "\n" +
-                "----------------------------\n";
+                "Response: \n" + response;
     }
 }
