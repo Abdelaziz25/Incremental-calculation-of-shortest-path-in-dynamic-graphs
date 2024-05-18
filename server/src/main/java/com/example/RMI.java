@@ -7,7 +7,7 @@ public class RMI implements GraphService {
     private final GraphInterface graph;
 
     public RMI() {
-        this.graph = new Graph("src/main/resources/graph.txt");
+        this.graph = new Graph("src/main/resources/graph_2.txt");
     }
 
     @Override
