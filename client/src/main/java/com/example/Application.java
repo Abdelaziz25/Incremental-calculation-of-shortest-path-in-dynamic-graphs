@@ -20,7 +20,7 @@ public class Application {
     }
 
     private static void startClients(Map<String, String> configs) throws InterruptedException {
-        int numberOfClients = Integer.parseInt(configs.get("numberOfNodes")) - 1;
+        int numberOfClients = Integer.parseInt(configs.get("numberOfNodes"));
         for (int i = 0; i < numberOfClients; ++i) {
             new ClientThread(configs).start();
             Thread.sleep(10);
