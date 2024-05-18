@@ -3,18 +3,11 @@ package com.example;
 import java.util.Random;
 
 public class GraphBatchGenerator {
-
     private static final String[] OPERATIONS = {"A", "D", "Q"};
-    private int graphSize;
+    private final int graphSize;
 
     public GraphBatchGenerator(int initialSize) {
         this.graphSize = initialSize;
-    }
-
-    public static void main(String[] args) {
-        String directoryPath = "src/main/java/Client/Batches/";
-        GraphBatchGenerator generator = new GraphBatchGenerator(100);
-        generator.generateBatch(5, 50);
     }
 
     public String generateBatch(int batchSize, int updateRatio) {
@@ -30,14 +23,15 @@ public class GraphBatchGenerator {
         batch.append("F\n"); // Append 'F' to mark the end of batch
         return batch.toString();
     }
-    public String getLog(Long responseTime, String response , String request, String algorithmType , int updataPercentage , int batchSize , long ThreadID){
-        return "threat ID = " +ThreadID +"\n"+
-                "response time = "+responseTime+"\n"+
-                "algorithm Type = "+ algorithmType+"\n"+
-                "updata Percentage = "+ updataPercentage+"\n"+
-                "batchSize = "+ batchSize+"\n"+
-                "request = \n"+ request+"\n"+
-                "response = \n"+ response+"\n"+
+
+    public String formatLog(long responseTime, String response, String request, String algorithmType, int updatePercentage, int batchSize, long threadID) {
+        return "Thread ID: " + threadID + "\n" +
+                "Response Time: " + responseTime + "\n" +
+                "Algorithm Type: " + algorithmType + "\n" +
+                "Update Percentage: " + updatePercentage + "\n" +
+                "Batch Size: " + batchSize + "\n" +
+                "Request: \n" + request + "\n" +
+                "Response: \n" + response + "\n" +
                 "----------------------------\n";
     }
 }
