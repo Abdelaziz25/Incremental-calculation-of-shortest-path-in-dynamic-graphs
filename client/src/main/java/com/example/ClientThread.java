@@ -1,4 +1,3 @@
-// Client.java
 package com.example;
 
 import org.apache.logging.log4j.LogManager;
@@ -10,14 +9,14 @@ import java.rmi.registry.Registry;
 import java.util.Map;
 import java.util.Random;
 
-public class Client extends Thread {
+public class ClientThread extends Thread {
    private static final int BATCH_SIZE = 10;
    private static final int SLEEP_TIME = 1000;
    private static final String ALGORITHM_USED = "BFS";
-   private static final Logger logger = LogManager.getLogger(Client.class);
+   private static final Logger logger = LogManager.getLogger(ClientThread.class);
    private final Map<String, String> configs;
 
-   public Client(Map<String, String> configs) {
+   public ClientThread(Map<String, String> configs) {
       this.configs = configs;
    }
 
@@ -40,7 +39,7 @@ public class Client extends Thread {
          long totalResponseTime = 0;
 
          for (int i = 0; i < 5; ++i) {
-            GraphBatchGenerator batch = new GraphBatchGenerator(graphInitialSize);
+            BatchGenerator batch = new BatchGenerator(graphInitialSize);
             Random rand = new Random();
             int updatePercentage = rand.nextInt(100);
             String requestBatch = batch.generateBatch(BATCH_SIZE, updatePercentage);

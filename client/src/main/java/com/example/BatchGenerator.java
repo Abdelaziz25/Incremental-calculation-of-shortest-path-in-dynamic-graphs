@@ -2,11 +2,11 @@ package com.example;
 
 import java.util.Random;
 
-public class GraphBatchGenerator {
+public class BatchGenerator {
     private static final String[] OPERATIONS = {"A", "D", "Q"};
     private final int graphSize;
 
-    public GraphBatchGenerator(int initialSize) {
+    public BatchGenerator(int initialSize) {
         this.graphSize = initialSize;
     }
 
