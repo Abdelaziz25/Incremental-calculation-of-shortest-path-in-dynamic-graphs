@@ -1,5 +1,9 @@
 package com.example;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Random;
 
 public class BatchGenerator {
@@ -21,6 +25,32 @@ public class BatchGenerator {
             batch.append(operation).append(" ").append(node1).append(" ").append(node2).append("\n");
         }
         batch.append("F\n"); // Append 'F' to mark the end of batch
+        return batch.toString();
+    }
+    public String generateBatch(String filePath) {
+        StringBuilder batch = new StringBuilder();
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.charAt(0) == 'F') {
+                    batch.append("F\n"); // Append 'F' to mark the end of batch
+                    break;
+                }
+                String[] edge = line.split(" ");
+                if (edge[0].equals("Q")) {
+                    batch.append("Q").append(" ").append(Integer.parseInt(edge[1])).append(" ").append(Integer.parseInt(edge[2])).append("\n");
+                }
+                else if (edge[0].equals("A")) {
+                    batch.append("A").append(" ").append(Integer.parseInt(edge[1])).append(" ").append(Integer.parseInt(edge[2])).append("\n");
+                }
+                else {
+                    batch.append("D").append(" ").append(Integer.parseInt(edge[1])).append(" ").append(Integer.parseInt(edge[2])).append("\n");
+                }
+
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
         return batch.toString();
     }
 
