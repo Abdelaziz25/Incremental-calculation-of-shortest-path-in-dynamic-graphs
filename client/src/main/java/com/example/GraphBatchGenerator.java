@@ -30,11 +30,11 @@ public class GraphBatchGenerator {
         batch.append("F\n"); // Append 'F' to mark the end of batch
         return batch.toString();
     }
-    public String getLog(Long responseTime, String response , String request, String algorithmType , int updataPercentage , int batchSize , long ThreadID){
+    public String getLog(Long responseTime, String response , String request, String algorithmType , int updatePercentage , int batchSize , long ThreadID){
         return "threat ID = " +ThreadID +"\n"+
                 "response time = "+responseTime+"\n"+
                 "algorithm Type = "+ algorithmType+"\n"+
-                "updata Percentage = "+ updataPercentage+"\n"+
+                "update Percentage = "+ updatePercentage+"\n"+
                 "batchSize = "+ batchSize+"\n"+
                 "request = \n"+ request+"\n"+
                 "response = \n"+ response+"\n"+

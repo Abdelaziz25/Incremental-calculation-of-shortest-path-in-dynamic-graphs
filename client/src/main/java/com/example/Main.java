@@ -45,12 +45,12 @@ public class Main {
             return configMap;
         }
     public static void main(String[] args) {
-        logger.info("Starting.....");
+//        logger.info("Starting.....");
         try {
             Map<String, String> configs = readConfigurations("application.properties");
             ArrayList<Client> clientsThreads = new ArrayList<>();
             
-            int numberOfClients = Integer.parseInt(configs.get("numberOfNodes")) - 1;
+            int numberOfClients = Integer.parseInt(configs.get("numberOfNodes"));
             
             //spawning threads
             for(int i=0;i< numberOfClients;++i){
